@@ -30,7 +30,7 @@ This project is a deep learning application that **automatically colorizes grays
 
 ---
 
-## 📁 File Structure
+## File Structure
 
 - BWopencv/
   |--b2w.py      # Main script to colorize images
