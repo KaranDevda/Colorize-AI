@@ -8,7 +8,7 @@ This project is a deep learning application that **automatically colorizes grays
 
 | Input (B&W) | Output (Colorized) |
 |-------------|--------------------|
-| ![bw](samples/input.jpg) | ![color](samples/output.jpg) |
+| ![bw](Lion.jpg) | ![color](Eagle.jpg) |
 
 ---
 
