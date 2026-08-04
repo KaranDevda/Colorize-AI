@@ -32,7 +32,7 @@ This project is a deep learning application that **automatically colorizes grays
 
 ## File Structure
 
-- BWopencv/
+- Colorize-AI/
   |--b2w.py      # Main script to colorize images
   |--images/     # Folder containing input B&W images
      |--Eagle.jpg
