@@ -1,0 +1,50 @@
+---
+title: "Installation"
+description: "Set up Colorize AI and download the pre-trained model files"
+---
+
+## Prerequisites
+
+- Python 3.7 or later
+- No GPU required — the model runs through OpenCV's DNN module on CPU
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/BWopencv.git
+cd BWopencv
+```
+
+## 2. Install dependencies
+
+```bash
+pip install opencv-python numpy
+```
+
+<Note>
+If you're using a virtual environment, activate it before running the install command.
+</Note>
+
+## 3. Get the model files
+
+The `models/` folder needs two pre-trained files:
+
+| File | Purpose |
+|---|---|
+| `colorization_deploy_v2.prototxt` | Model architecture definition |
+| `colorization_release_v2.caffemodel` | Trained model weights |
+| `pts_in_null.py` | Cluster center points used for colorization |
+
+<Warning>
+These model files are large and typically aren't stored directly in the Git repo. If they're not already in `models/`, download them from the original Caffe colorization project and place them in that folder before running the script.
+</Warning>
+
+## Verify your setup
+
+Confirm OpenCV and NumPy import correctly:
+
+```bash
+python -c "import cv2, numpy; print(cv2.__version__)"
+```
+
+If this prints a version number without errors, you're ready to move on to the [Quickstart](/quickstart).

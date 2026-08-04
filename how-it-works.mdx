@@ -1,0 +1,46 @@
+---
+title: "How It Works"
+description: "The LAB color space pipeline behind the colorization"
+---
+
+## Why LAB color space instead of RGB
+
+A standard image has 3 channels (Red, Green, Blue), and all 3 carry both brightness and color information mixed together. That makes color *prediction* harder, because the model would need to reconstruct brightness too.
+
+**LAB color space** separates these concerns cleanly:
+
+| Channel | Represents |
+|---|---|
+| `L` | Lightness (this **is** your grayscale image) |
+| `a` | Green–Red color component |
+| `b` | Blue–Yellow color component |
+
+Since a grayscale image is already equivalent to the `L` channel, the model's entire job shrinks to: **predict `a` and `b` from `L`**.
+
+## Pipeline steps
+
+<Steps>
+  <Step title="Load and convert">
+    The input grayscale image is loaded and converted from BGR to LAB color space using OpenCV. Since the image is grayscale, this mainly isolates the `L` channel.
+  </Step>
+  <Step title="Resize and normalize">
+    The `L` channel is resized to the input dimensions the Caffe model expects, then mean-centered for the network.
+  </Step>
+  <Step title="Run inference">
+    The `L` channel is passed through the pre-trained Caffe model (loaded via `cv2.dnn.readNetFromCaffe`), which predicts the `a` and `b` channels.
+  </Step>
+  <Step title="Merge channels">
+    The predicted `a` and `b` channels are resized back to the original image dimensions and merged with the original `L` channel.
+  </Step>
+  <Step title="Convert back to BGR">
+    The merged LAB image is converted back to BGR/RGB so it can be saved or displayed as a normal color image.
+  </Step>
+</Steps>
+
+## About the model
+
+The model is based on the colorization architecture from Zhang, Isola, and Efros (*Colorful Image Colorization*), which frames colorization as a classification problem over a quantized color space rather than direct regression — this is part of why results look plausible rather than washed out or averaged toward brown/gray tones. The `pts_in_null.py` file provides the cluster center points used in that classification step.
+
+<Note>
+This project uses the pre-trained weights from that model via OpenCV's DNN module — it does not train the model from scratch.
+</Note>

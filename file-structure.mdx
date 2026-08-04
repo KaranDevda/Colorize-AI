@@ -1,0 +1,38 @@
+---
+title: "File Structure"
+description: "Layout of the Colorize AI repository"
+---
+
+```text
+BWopencv/
+├── b2w.py                                   # Main script — run this to colorize an image
+├── images/                                  # Sample and input black-and-white images
+│   ├── Eagle.jpg
+│   ├── Lion.jpg
+│   ├── rma.jpg
+│   ├── Santiago.jpg
+│   ├── wizard.jpg
+│   └── zidane.jpg
+├── models/                                  # Pre-trained model files
+│   ├── colorization_deploy_v2.prototxt      # Model architecture
+│   ├── colorization_release_v2.caffemodel   # Trained weights
+│   └── pts_in_null.py                       # Cluster center points for color prediction
+└── README.md                                # Project documentation
+```
+
+## Key files
+
+<AccordionGroup>
+  <Accordion title="b2w.py">
+    The entry point. Loads the model, reads an input image, runs it through the LAB → predict → merge → BGR pipeline described in [How It Works](/how-it-works), and outputs the colorized result.
+  </Accordion>
+  <Accordion title="colorization_deploy_v2.prototxt">
+    Defines the network's layer architecture — required by OpenCV's DNN module to know how to structure the model before loading weights.
+  </Accordion>
+  <Accordion title="colorization_release_v2.caffemodel">
+    The actual trained weights for the colorization network. This is the file doing the "learning" — it's what predicts color from structure.
+  </Accordion>
+  <Accordion title="pts_in_null.py">
+    Contains the quantized color cluster points the model classifies pixels into, rather than predicting raw continuous color values.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,56 @@
+---
+title: "Quickstart"
+description: "Colorize your first image"
+---
+
+## Run on a sample image
+
+The `images/` folder ships with a few sample black-and-white photos to test against.
+
+```bash
+python b2w.py --image images/Eagle.jpg
+```
+
+<Tip>
+Replace `images/Eagle.jpg` with the path to any grayscale image you want to colorize.
+</Tip>
+
+## Run on your own image
+
+<Steps>
+  <Step title="Add your image">
+    Drop your black-and-white image into the `images/` folder (or reference it by full path).
+  </Step>
+  <Step title="Run the script">
+    ```bash
+    python b2w.py --image images/your-photo.jpg
+    ```
+  </Step>
+  <Step title="Check the output">
+    The colorized result is saved alongside the input, or displayed directly depending on how `b2w.py` is configured in your version.
+  </Step>
+</Steps>
+
+## Example
+
+<CodeGroup>
+```bash Command
+python b2w.py --image images/Lion.jpg
+```
+
+```text Expected output
+Loading model...
+Processing images/Lion.jpg...
+Colorized image saved to output/Lion_colorized.jpg
+```
+</CodeGroup>
+
+<Note>
+Adjust the exact flag names and output path here to match what `b2w.py` actually accepts and prints in your version of the script.
+</Note>
+
+## Next steps
+
+<Card title="How It Works" icon="brain" href="/how-it-works">
+  See what's happening inside the model, step by step
+</Card>

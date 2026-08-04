@@ -1,0 +1,33 @@
+---
+title: "Introduction"
+description: "Automatic black-and-white to color image conversion using deep learning"
+---
+
+Colorize AI takes a grayscale (black-and-white) image and predicts realistic colors for it using a pre-trained deep learning model — no manual editing required.
+
+<Frame>
+  <img src="/images/sample-result.png" alt="Black and white image next to its colorized output" />
+</Frame>
+
+## Why this exists
+
+Colorizing old photos by hand is slow and requires real artistic judgment about what colors "should" look right. This project automates that process using a neural network trained specifically to predict color from grayscale structure — the same category of model used in production photo-restoration tools.
+
+## How it works, in short
+
+The model doesn't generate an image from scratch. It works in **LAB color space**, where a single channel (`L`) already holds all the brightness/structure information from your grayscale image. The network's only job is to predict the two missing color channels (`a` and `b`), which are then merged back with the original `L` channel to produce a full-color image.
+
+<Card title="See the full pipeline" icon="diagram-project" href="/how-it-works">
+  Understand the LAB color space conversion and model architecture in detail
+</Card>
+
+## Quick links
+
+<CardGroup cols={2}>
+  <Card title="Installation" icon="download" href="/installation">
+    Set up dependencies and download the pre-trained model
+  </Card>
+  <Card title="Quickstart" icon="play" href="/quickstart">
+    Colorize your first image in under a minute
+  </Card>
+</CardGroup>
