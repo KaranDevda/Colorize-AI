@@ -1,0 +1,43 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Colorize AI",
+  "colors": {
+    "primary": "#2E86AB",
+    "light": "#5DADE2",
+    "dark": "#1B4F72"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "how-it-works",
+          "file-structure"
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/KaranDevda/Colorize-AI"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/KaranDevda"
+    }
+  }
+}
